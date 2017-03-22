@@ -27,7 +27,7 @@ function pullProducts (xhrData) {
 	console.log(productArray);
 	for (var i = 0; i< xhrData.products.length; i++) {
 		currentProduct = xhrData.products[i];
-		console.log(currentProduct);
+		// console.log(currentProduct);
 		productsString += `<h3>Name: ${currentProduct.name}</h3>`
 		productsString += `<p>Price: ${currentProduct.price}</p>`
 		console.log(productsString);
@@ -43,6 +43,8 @@ function executeThisCodeAfterFileLoaded2 (){
 function categoryInfo (xhrData){
 	console.log("xhrData", xhrData);
 	departmentArray = xhrData.catagories;
+	console.log(departmentArray);
+	console.log(productArray);
 	console.log(productArray.category_id);
 	for(var i=0; i<departmentArray.length; i++){
 		if (productArray.category_id === departmentArray[i].id){
@@ -53,7 +55,7 @@ function categoryInfo (xhrData){
 
 //function alerts for whether json files were atttainable. 
 function executeThisCodeAfterFileLoaded (){
-	console.log("Data loaded!");
+	// console.log("Data loaded!");
 	//This is where you are actually pulling the data for access?
 	var data = JSON.parse(this.responseText);
 	pullProducts(data);
@@ -78,7 +80,7 @@ products.addEventListener("error", executeThisCodeAfterFileFails);
 products.open("GET", "products.json");
 products.send();
 
-console.log("last line");
+// console.log("last line");
 
 
 
