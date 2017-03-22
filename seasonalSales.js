@@ -16,21 +16,21 @@ var currentCatagory = "";
 // 		console.log(currentCatagory);
 // 		catagoriesString += `<h3>Department: ${currentCatagory.name}</h3>`
 // 		catagoriesString +=  `<p>Price: ${currentCatagory.season_discount}</p>`
-// 		console.log(catagoriesString);
+// 		// console.log(catagoriesString);
 // 	}
 // 	productContainer.innerHTML = productsString;
-// 	console.log(pullCatagory);
+// 	// console.log(pullCatagory);
 // }
 
 function pullProducts (xhrData) {
 	productArray = xhrData.products;
-	console.log(productArray);
+	// console.log(productArray);
 	for (var i = 0; i< xhrData.products.length; i++) {
 		currentProduct = xhrData.products[i];
 		// console.log(currentProduct);
 		productsString += `<h3>Name: ${currentProduct.name}</h3>`
 		productsString += `<p>Price: ${currentProduct.price}</p>`
-		console.log(productsString);
+		// console.log(productsString);
 	}
 	productContainer.innerHTML = productsString;
 }
@@ -41,14 +41,11 @@ function executeThisCodeAfterFileLoaded2 (){
 }
 
 function categoryInfo (xhrData){
-	console.log("xhrData", xhrData);
+	// console.log("xhrData", xhrData);
 	departmentArray = xhrData.catagories;
-	console.log(departmentArray);
-	console.log(productArray);
-	console.log(productArray.category_id);
 	for(var i=0; i<departmentArray.length; i++){
 		if (productArray.category_id === departmentArray[i].id){
-			console.log("in my if statement");
+			console.log("in my if statement", categoryInfo);
 		}
 	} 
 }
