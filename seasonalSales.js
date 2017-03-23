@@ -74,17 +74,3 @@ products.send();
 console.log("last line");
 
 
-
-
-
-
-
-// function pullCatagory (xhrData) {
-// 	for (var i=0; i< xhrData.catagories.length; i++) {
-// 		currentCatagory = xhrData.catagories[i];
-// 		catagoriesString += `<h3>Department: ${currentCatagory.name}</h3>`
-// 		catagoriesString +=  `<p>Price: ${currentCatagory.season_discount}</p>`
-// 	}
-// 	productContainer.innerHTML = productsString;
-// }
-
