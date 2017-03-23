@@ -29,10 +29,12 @@ function categoryInfo (xhrData){
 	departmentArray = xhrData.catagories;
 	for(var k=0; k<productArray.length; k++){	
 		for(var i=0; i<departmentArray.length; i++){
+			//// if its on the left it what you want it to print or add on the right is where you are getting it from. - #AndreaKnowledgeBOMB
 			if (productArray[k].category_id === departmentArray[i].id){
-				productArray[k]["category_name"] = departmentArray[i].id;
-				productArray[k]["category_season_discount"] = departmentArray[i].id;
-				productArray[k]["category_discount"] = departmentArray[i].id;
+				productArray[k]["category_name"] = departmentArray[i].name;
+				productArray[k]["category_season"] = departmentArray[i].season_discount;
+				productArray[k]["category_discount"] = departmentArray[i].discount;
+				console.log()
 			}
 		}
 	} 
