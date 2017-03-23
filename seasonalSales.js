@@ -14,9 +14,9 @@ var products = new XMLHttpRequest();
 
 function printToDom () {
 	for (var i = 0; i< productArray.length; i++) {
-		productsString +=`<div class="column-fluid">`;
-		productsString +=`<div class="col-sm-6 col-md-4">`;
-		productsString +=`<div class="thumbnail">`;
+		productsString += `<div class="column-fluid">`;
+		productsString += `<div class="col-sm-6 col-md-4">`;
+		productsString += `<div class="thumbnail">`;
 		productsString += `<div class="caption">`;
 		productsString += `<h3>Name: ${productArray[i].name}</h3>`;
 		productsString += `<p>Price: ${productArray[i].price}</p>`;
@@ -90,6 +90,6 @@ products.send();
 
 console.log("last line");
 
-seasonSelected.addEventListener("click", switchSeasons);
+seasonSelected.addEventListener("change", switchSeasons);
 
 
