@@ -3,7 +3,6 @@ console.log("first line");
 var productContainer = document.getElementById("productClass");
 var departmentArray = [];
 var productArray = [];
-var productsString = "";
 var catagoriesString = "";
 var currentProduct = "";
 var currentCatagory = "";
@@ -13,6 +12,7 @@ var products = new XMLHttpRequest();
 
 
 function printToDom () {
+	var productsString = "";
 	for (var i = 0; i< productArray.length; i++) {
 		productsString += `<div class="column-fluid">`;
 		productsString += `<div class="col-sm-6 col-md-4">`;
@@ -50,7 +50,7 @@ function categoryInfo (xhrData){
 				productArray[k]["category_name"] = departmentArray[i].name;
 				productArray[k]["category_season"] = departmentArray[i].season_discount;
 				productArray[k]["category_discount"] = departmentArray[i].discount;
-				productArray[k]["discPrice"] = (1-departmentArray[i].discount)*productArray[k].price;
+				productArray[k]["discPrice"] = ((1-departmentArray[i].discount)*productArray[k].price).toFixed(2);
 				
 			}
 		}
@@ -87,8 +87,6 @@ products.addEventListener("load", executeThisCodeAfterFileLoaded);
 products.addEventListener("error", executeThisCodeAfterFileFails);
 products.open("GET", "products.json");
 products.send();
-
-console.log("last line");
 
 seasonSelected.addEventListener("change", switchSeasons);
 
