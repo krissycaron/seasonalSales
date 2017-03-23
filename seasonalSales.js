@@ -7,14 +7,26 @@ var productsString = "";
 var catagoriesString = "";
 var currentProduct = "";
 var currentCatagory = "";
-
+var seasonSelected = document.getElementById("seasonDropdown");
+var currentSeasonSelected = "";
+var products = new XMLHttpRequest();
 
 
 function printToDom () {
 	for (var i = 0; i< productArray.length; i++) {
-		productsString += `<h3>Name: ${productArray[i].name}</h3>`
-		productsString += `<p>Price: ${productArray[i].price}</p>`
-		productsString += `<p>Department: ${productArray[i].category_name}</p>`
+		productsString +=`<div class="column-fluid">`;
+		productsString +=`<div class="col-sm-6 col-md-4">`;
+		productsString +=`<div class="thumbnail">`;
+		productsString += `<div class="caption">`;
+		productsString += `<h3>Name: ${productArray[i].name}</h3>`;
+		productsString += `<p>Price: ${productArray[i].price}</p>`;
+		productsString += `<p>Department: ${productArray[i].category_name}</p>`;
+			if (productArray[i].category_season==currentSeasonSelected){
+				productsString += `<p>${productArray[i].discPrice}</p>`;
+			} else {
+				productsString += `<p>${productArray[i].price}</p>`
+			} 
+		productsString +=`</div></div></div></div>`;
 	}
 	productContainer.innerHTML = productsString;
 }
@@ -64,13 +76,20 @@ function secondData(){	//this will grab and get JSON data from catagories file
 	catagories.send();
 };
 
+//function to run after click
+function switchSeasons() {
+	currentSeasonSelected =event.target.value;
+	printToDom();
+}
+
 //This will request the data from the products.json
-var products = new XMLHttpRequest();
 products.addEventListener("load", executeThisCodeAfterFileLoaded);
 products.addEventListener("error", executeThisCodeAfterFileFails);
 products.open("GET", "products.json");
 products.send();
 
 console.log("last line");
+
+seasonSelected.addEventListener("click", switchSeasons);
 
 
