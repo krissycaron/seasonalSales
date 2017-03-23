@@ -8,15 +8,19 @@ var catagoriesString = "";
 var currentProduct = "";
 var currentCatagory = "";
 
-function pullProducts (xhrData) {
-	productArray = xhrData.products;
-	console.log(productArray);
-	for (var i = 0; i< xhrData.products.length; i++) {
-		currentProduct = xhrData.products[i];
-		productsString += `<h3>Name: ${currentProduct.name}</h3>`
-		productsString += `<p>Price: ${currentProduct.price}</p>`
+
+
+function printToDom () {
+	for (var i = 0; i< productArray.length; i++) {
+		productsString += `<h3>Name: ${productArray[i].name}</h3>`
+		productsString += `<p>Price: ${productArray[i].price}</p>`
+		productsString += `<p>Department: ${productArray[i].category_name}</p>`
 	}
 	productContainer.innerHTML = productsString;
+}
+
+function pullProducts (xhrData) {
+	productArray = xhrData.products;
 	secondData();
 }
 
@@ -34,10 +38,12 @@ function categoryInfo (xhrData){
 				productArray[k]["category_name"] = departmentArray[i].name;
 				productArray[k]["category_season"] = departmentArray[i].season_discount;
 				productArray[k]["category_discount"] = departmentArray[i].discount;
-				console.log()
+				productArray[k]["discPrice"] = (1-departmentArray[i].discount)*productArray[k].price;
+				
 			}
 		}
-	} 
+	}
+	printToDom(); 
 }
 
 //function alerts for whether json files were atttainable. 
